@@ -1,6 +1,6 @@
 """A skill for all kinds of chance - make a choice, roll a die, flip a coin, etc."""
 from os.path import dirname
-from random import randint
+from random import randint, choice
 from typing import List
 
 from icepool import Die, d
@@ -55,10 +55,14 @@ class RandomnessSkill(OVOSSkill):
     def handle_flip_a_coin(self, message: Message):  # pylint: disable=unused-argument
         """Flip a coin."""
         self.play_audio(f"{dirname(__file__)}/coin-flip.wav")
+        heads_list = self.voc_list("heads")
+        tails_list = self.voc_list("tails")
+        heads_word = choice(heads_list)
+        tails_word = choice(tails_list)
         try:
-            result = Die(["heads", "tails"]).sample()
+            result = Die([heads_word, tails_word]).sample()
         except TypeError:
-            result = Die("heads", "tails").sample()
+            result = Die(heads_word, tails_word).sample()
         self.speak_dialog("coin-result", data={"result": result})
         self.gui.show_text(result)
         self.enclosure.system_blink(3)
@@ -69,10 +73,14 @@ class RandomnessSkill(OVOSSkill):
         """Get a random fortune."""
         self.play_audio(f"{dirname(__file__)}/magic.mp3")
         fortune = self.get_response("fortune-query")
+        yes_list = self.voc_list("yes")
+        no_list = self.voc_list("no")
+        yes_word = choice(yes_list)
+        no_word = choice(no_list)
         try:
-            answer = Die(["yes", "no"]).sample()
+            answer = Die([yes_word, no_word]).sample()
         except TypeError:
-            answer = Die("yes", "no").sample()
+            answer = Die(yes_word, no_word).sample()
         self.speak_dialog("fortune-result", {"answer": answer})
         fortune_with_answer = f"{fortune}? ...{answer}"
         self.gui.show_text(fortune_with_answer)
