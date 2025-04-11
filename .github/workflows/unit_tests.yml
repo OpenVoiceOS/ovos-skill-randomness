@@ -34,9 +34,9 @@ jobs:
         python-version: [ "3.12", "3.13" ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install System Dependencies
@@ -53,7 +53,7 @@ jobs:
           python -m pip install -r requirements-dev.txt
       - name: Run unittests
         run: |
-          pytest --cov=ovos_utils --cov-report xml test/
+          pytest --cov=ovos_utils --cov=skill_randomness --cov-report xml test/
           # NOTE: additional pytest invocations should also add the --cov-append flag
           #       or they will overwrite previous invocations' coverage reports
           #       (for an example, see OVOS Skill Manager's workflow)
@@ -61,4 +61,4 @@ jobs:
         if: "${{ matrix.python-version == '3.12' }}"
         env:
           CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
