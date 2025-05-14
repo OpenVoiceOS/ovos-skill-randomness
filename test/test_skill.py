@@ -2,7 +2,7 @@
 import pytest
 import shutil
 from json import dumps
-from os import environ, getenv, makedirs
+from os import environ, makedirs
 from os.path import join, dirname, isdir
 from unittest.mock import Mock, patch
 from typing import Any, Generator
