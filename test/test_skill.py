@@ -1,10 +1,11 @@
 # pylint: disable=missing-docstring
+import pytest
 import shutil
 from json import dumps
-from os import environ, getenv, makedirs
+from os import environ, makedirs
 from os.path import join, dirname, isdir
-from unittest.mock import Mock
-import pytest
+from unittest.mock import Mock, patch
+from typing import Any, Generator
 from ovos_plugin_manager.skills import find_skill_plugins
 from ovos_utils.fakebus import FakeBus
 
@@ -12,16 +13,10 @@ from skill_randomness import RandomnessSkill
 
 
 @pytest.fixture(scope="session")
-def test_skill(test_skill_id="skill-ovos-randomness.openvoiceos", bus=FakeBus()):
+def test_skill(test_skill_id="skill-ovos-randomness.openvoiceos", bus=FakeBus()) -> Generator[RandomnessSkill, Any, None]:
     # Get test skill
     bus.emitter = bus.ee
     bus.run_forever()
-    skill_entrypoint = getenv("TEST_SKILL_ENTRYPOINT")
-    if not skill_entrypoint:
-        skill_entrypoints = list(find_skill_plugins().keys())
-        assert test_skill_id in skill_entrypoints
-        skill_entrypoint = test_skill_id
-
     skill = RandomnessSkill(skill_id=test_skill_id, bus=bus)
     skill.speak = Mock()
     skill.speak_dialog = Mock()
@@ -54,8 +49,17 @@ class TestRandomnessSkill:
     def test_nada(self, test_skill):
         assert True
 
+
 def test_skill_is_a_valid_plugin():
     assert "skill-ovos-randomness.openvoiceos" in find_skill_plugins()
+
+
+@patch('skill_randomness.choice')
+def test_skill_flip_coin(choice_mock, test_skill):
+    choice_mock.return_value = 'heads'
+    test_skill.handle_flip_a_coin('flip a coin')
+    test_skill.speak_dialog.assert_called_with('coin-result', data={'result': 'heads'})
+
 
 if __name__ == "__main__":
     pytest.main()
