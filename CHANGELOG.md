@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.1a1](https://github.com/OpenVoiceOS/skill-ovos-randomness/tree/0.1.1a1) (2024-11-12)
+## [0.1.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/0.1.2a1) (2025-01-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/skill-ovos-randomness/compare/0.1.0...0.1.1a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.1...0.1.2a1)
 
 **Merged pull requests:**
 
-- fix: drop lingua-franca [\#17](https://github.com/OpenVoiceOS/skill-ovos-randomness/pull/17) ([JarbasAl](https://github.com/JarbasAl))
+- import galician and basque translations [\#20](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/20) ([JarbasAl](https://github.com/JarbasAl))
 
 
 

@@ -1,0 +1,25 @@
+{
+    "/intents/fortune-teller.intent": [
+        "Esadazu (nire |)(etorkizuna|patua)"
+    ],
+    "/intents/roll-single-die.intent": [
+        "bota dadoa",
+        "bota dadoa",
+        "bota {faces} aldeko dadoa",
+        "bota {faces} aldeko dadoa"
+    ],
+    "/intents/make-a-choice.intent": [
+        "lagun iezadazu (erabaki bat hartzen|aukera bat hautatzen)"
+    ],
+    "/intents/pick-a-number.intent": [
+        "(hautatu|aukeratu) {lower} eta {upper} arteko zenbaki bat"
+    ],
+    "/intents/roll-multiple-dice.intent": [
+        "bota {number} dado",
+        "bota {number} d {faces}",
+        "bota {faces} aldeko {number} dado"
+    ],
+    "/intents/flip-a-coin.intent": [
+        "bota txanpona airera"
+    ]
+}

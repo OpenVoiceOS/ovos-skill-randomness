@@ -1,0 +1,3 @@
+lanza {number} (dados|dado)
+lanza {number} (dados|dado) de {faces} caras
+lanza {number} de {faces}

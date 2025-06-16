@@ -1,0 +1,25 @@
+{
+    "/intents/fortune-teller.intent": [
+        "Dime (o |un |o meu | a miña) (futuro|fortuna)"
+    ],
+    "/intents/roll-single-die.intent": [
+        "lanza (un| ) dado",
+        "lanza un dado",
+        "lanza dados de {faces} caras",
+        "lanza un dado de {faces} caras"
+    ],
+    "/intents/make-a-choice.intent": [
+        "axúdame (a facer unha escolla|a decidir algo)"
+    ],
+    "/intents/pick-a-number.intent": [
+        "(escolle|selecciona|elixe) un número entre {lower} e {upper}"
+    ],
+    "/intents/roll-multiple-dice.intent": [
+        "lanza {number} (dados|dado)",
+        "lanza {number} de {faces}",
+        "lanza {number} (dados|dado) de {faces} caras"
+    ],
+    "/intents/flip-a-coin.intent": [
+        "a caras ou cruces"
+    ]
+}

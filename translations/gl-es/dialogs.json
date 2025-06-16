@@ -1,0 +1,45 @@
+{
+    "/dialog/first-choice.dialog": [
+        "Vale. Cal é a primeira escolla?",
+        "Cal é a túa primeira opción?"
+    ],
+    "/dialog/coin-result.dialog": [
+        "Foi {result}",
+        "{result}"
+    ],
+    "/dialog/fortune-result.dialog": [
+        "{answer}"
+    ],
+    "/dialog/die-result.dialog": [
+        "Sacaches un {result}",
+        "{result}"
+    ],
+    "/dialog/over-dice-limit.dialog": [
+        "Fixaches un límite de {number} na túa configuración. O que vou facer é lanzar {number} dados."
+    ],
+    "/dialog/fortune-query.dialog": [
+        "Eu sei todas as cousas... se son preguntas de si ou non. Cal é a túa?",
+        "Que queres saber? Responderei si ou non."
+    ],
+    "/dialog/second-choice.dialog": [
+        "Vale. Agora cal é a segunda opción?",
+        "Cal é a túa segunda opción?"
+    ],
+    "/dialog/multiple-die-result.dialog": [
+        "Os teus datos son {result_string} cun total de {result_total}"
+    ],
+    "/dialog/number-result.dialog": [
+        "Eu escollín {number}",
+        "Elixín {number}",
+        "Vale. {number}",
+        "{number}"
+    ],
+    "/dialog/choice-result.dialog": [
+        "Sen dúbida {choice}.",
+        "Unha escolla difícil. Mais imos escoller {choice}!"
+    ],
+    "/dialog/number-range-not-specified.dialog": [
+        "Non entendín moi ben os teus números. Vou escoller entre 1 e 10 daquela.",
+        "Non sei moi ben o que dixeches. Imos escoller entre 1 e 10."
+    ]
+}

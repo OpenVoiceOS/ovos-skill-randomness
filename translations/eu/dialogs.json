@@ -1,0 +1,45 @@
+{
+    "/dialog/first-choice.dialog": [
+        "Ok. Zein da lehen aukera?",
+        "Zein da zure lehen aukera?"
+    ],
+    "/dialog/coin-result.dialog": [
+        "{result} egokitu da",
+        "{result}"
+    ],
+    "/dialog/fortune-result.dialog": [
+        "{answer}"
+    ],
+    "/dialog/die-result.dialog": [
+        "{result} atera duzu",
+        "{result}"
+    ],
+    "/dialog/over-dice-limit.dialog": [
+        "{number} dadoren muga duzu ezarrita zure ezarpenetan. Horren ordez, {number} dado botako ditut."
+    ],
+    "/dialog/fortune-query.dialog": [
+        "Nik dena dakit...baldin eta bai ala ez erantzuteko galderak badira. Zein da zurea?",
+        "Zer jakin nahi duzu? Bai ala ez erantzungo dizut."
+    ],
+    "/dialog/second-choice.dialog": [
+        "Ok. Orain, zein da bigarren aukera?",
+        "Zein da zure bigarren aukera?"
+    ],
+    "/dialog/multiple-die-result.dialog": [
+        "Zure dadoak dio {result_string}, eta guztira {result_total} da"
+    ],
+    "/dialog/number-result.dialog": [
+        "{number} aukeratu dut",
+        "{number} hautatu dut",
+        "Okay. {number}",
+        "{number}"
+    ],
+    "/dialog/choice-result.dialog": [
+        "Zalantzarik gabe, {choice}.",
+        "Aukera zaila, baina hauta dezagun hau: {choice}!"
+    ],
+    "/dialog/number-range-not-specified.dialog": [
+        "Ez ditut zure zenbakiak ongi ulertu; beraz, 1etik 10ra bitarte hautatuko dut.",
+        "Ez nago ziur zer esan duzun. Aukera dezagun 1etik 10era bitarte."
+    ]
+}
