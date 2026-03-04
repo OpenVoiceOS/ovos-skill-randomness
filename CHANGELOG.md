@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a1) (2026-03-04)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.3a1...1.0.0a1)
+
+**Breaking changes:**
+
+- feat!: remove icepool dependency [\#29](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/29) ([mikejgray](https://github.com/mikejgray))
+
 ## [0.1.3a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/0.1.3a1) (2026-03-04)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.2...0.1.3a1)
