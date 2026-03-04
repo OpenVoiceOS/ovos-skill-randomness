@@ -26,7 +26,7 @@
     "pip_spec": "ovos-skill-randomness",
     "license": "MIT",
     "author": "OpenVoiceOS",
-    "version": "0.1.2",
+    "version": "0.1.3a1",
     "url": "https://github.com/openvoiceos/skill-ovos-randomness",
     "skill_id": "skill-ovos-randomness.openvoiceos=skill_ovos_randomness:RandomnessSkill",
     "skillname": "skill-ovos-randomness",
@@ -37,8 +37,7 @@
         "python": [
             "ovos-utils",
             "ovos-workshop",
-            "ovos-number-parser>=0.0.1,<1.0.0",
-            "icepool"
+            "ovos-number-parser>=0.0.1,<1.0.0"
         ],
         "system": {},
         "skill": []
