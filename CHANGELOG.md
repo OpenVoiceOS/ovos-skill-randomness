@@ -1,12 +1,12 @@
 # Changelog
 
-## [0.1.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/0.1.2a1) (2025-01-04)
+## [0.1.3a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/0.1.3a1) (2026-03-04)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.1...0.1.2a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.2...0.1.3a1)
 
 **Merged pull requests:**
 
-- import galician and basque translations [\#20](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/20) ([JarbasAl](https://github.com/JarbasAl))
+- chore: Configure Renovate [\#24](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/24) ([renovate[bot]](https://github.com/apps/renovate))
 
 
 
