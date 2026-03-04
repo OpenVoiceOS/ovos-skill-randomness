@@ -71,10 +71,10 @@ class RandomnessSkill(OVOSSkill):
     @intent_handler("roll-single-die.intent")
     def handle_roll_single_die(self, message: Message):
         """Roll a single die."""
-        faces = extract_number(message.data.get("faces", "6"), lang=self.lang)
+        faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         self.log.debug(f"Rolling a die with {faces} faces")
-        result = randint(1, int(faces))
+        result = randint(1, faces)
         self.speak_dialog("die-result", data={"result": result})
         self.gui.show_text(str(result))
         self.enclosure.eyes_spin()
@@ -83,15 +83,15 @@ class RandomnessSkill(OVOSSkill):
     @intent_handler("roll-multiple-dice.intent")
     def handle_roll_multiple_dice(self, message: Message):
         """Roll multiple dice."""
-        number = extract_number(message.data.get("number"), lang=self.lang)
-        faces = extract_number(message.data.get("faces", "6"), lang=self.lang)
+        number = int(extract_number(message.data.get("number"), lang=self.lang) or 1)
+        faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         if number > self.die_limit:
             self.speak_dialog("over-dice-limit", data={"number": self.die_limit})
             number = self.die_limit
         self.log.debug(f"Rolling {number} dice with {faces} faces")
         result_list: List[int] = []
-        for _ in range(1, int(number) + 1):
-            val = randint(1, int(faces))
+        for _ in range(1, number + 1):
+            val = randint(1, faces)
             result_list.append(val)
         self.speak_dialog("multiple-die-result", data={"result_string": ", ".join([str(x) for x in result_list]), "result_total": str(sum(result_list))})
