@@ -1,9 +1,7 @@
 """A skill for all kinds of chance - make a choice, roll a die, flip a coin, etc."""
 from os.path import dirname
-from random import randint
+from random import choice, randint
 from typing import List
-
-from icepool import Die, d
 
 from ovos_bus_client.message import Message
 from ovos_workshop.decorators import intent_handler
@@ -23,10 +21,7 @@ class RandomnessSkill(OVOSSkill):
         """Decide between two things."""
         first_choice = self.get_response("first-choice") or "the first one"
         second_choice = self.get_response("second-choice") or "the second one"
-        try:
-            result = Die([first_choice, second_choice]).sample()
-        except TypeError:
-            result = Die(first_choice, second_choice).sample()
+        result = choice([first_choice, second_choice])
         self.speak_dialog("choice-result", data={"choice": result})
         self.gui.show_text(result)
         self.enclosure.eyes_blink("b")
@@ -55,10 +50,7 @@ class RandomnessSkill(OVOSSkill):
     def handle_flip_a_coin(self, message: Message):  # pylint: disable=unused-argument
         """Flip a coin."""
         self.play_audio(f"{dirname(__file__)}/coin-flip.wav")
-        try:
-            result = Die(["heads", "tails"]).sample()
-        except TypeError:
-            result = Die("heads", "tails").sample()
+        result = choice(["heads", "tails"])
         self.speak_dialog("coin-result", data={"result": result})
         self.gui.show_text(result)
         self.enclosure.system_blink(3)
@@ -69,10 +61,7 @@ class RandomnessSkill(OVOSSkill):
         """Get a random fortune."""
         self.play_audio(f"{dirname(__file__)}/magic.mp3")
         fortune = self.get_response("fortune-query")
-        try:
-            answer = Die(["yes", "no"]).sample()
-        except TypeError:
-            answer = Die("yes", "no").sample()
+        answer = choice(["yes", "no"])
         self.speak_dialog("fortune-result", {"answer": answer})
         fortune_with_answer = f"{fortune}? ...{answer}"
         self.gui.show_text(fortune_with_answer)
@@ -85,7 +74,7 @@ class RandomnessSkill(OVOSSkill):
         faces = extract_number(message.data.get("faces", "6"), lang=self.lang)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         self.log.debug(f"Rolling a die with {faces} faces")
-        result = Die(d(int(faces))).sample()
+        result = randint(1, int(faces))
         self.speak_dialog("die-result", data={"result": result})
         self.gui.show_text(str(result))
         self.enclosure.eyes_spin()
@@ -103,6 +92,6 @@ class RandomnessSkill(OVOSSkill):
         self.log.debug(f"Rolling {number} dice with {faces} faces")
         result_list: List[int] = []
         for _ in range(1, int(number) + 1):
-            val = Die(d(int(faces))).sample()
+            val = randint(1, int(faces))
             result_list.append(val)
         self.speak_dialog("multiple-die-result", data={"result_string": ", ".join([str(x) for x in result_list]), "result_total": str(sum(result_list))})
