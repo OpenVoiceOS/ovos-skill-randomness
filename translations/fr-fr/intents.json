@@ -1,0 +1,29 @@
+{
+  "/intents/fortune-teller.intent": [
+    "dis-moi la bonne aventure",
+    "dis-moi ma bonne aventure",
+    "raconte-moi la bonne aventure"
+  ],
+  "/intents/roll-single-die.intent": [
+    "lance un dé",
+    "lance un dé à {faces} faces"
+  ],
+  "/intents/make-a-choice.intent": [
+    "aide-moi à choisir",
+    "aide-moi à décider"
+  ],
+  "/intents/pick-a-number.intent": [
+    "choisis un nombre entre {lower} et {upper}",
+    "prends un nombre entre {lower} et {upper}"
+  ],
+  "/intents/roll-multiple-dice.intent": [
+    "lance {number} dés",
+    "lance {number} dés à {faces} faces"
+  ],
+  "/intents/flip-a-coin.intent": [
+    "pile ou face",
+    "fais pile ou face",
+    "tire à pile ou face",
+    "lance une pièce"
+  ]
+}

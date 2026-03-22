@@ -1,0 +1,44 @@
+{
+  "/dialog/first-choice.dialog": [
+    "Quelle est votre première option ?",
+    "D'accord, quelle est la première option ?"
+  ],
+  "/dialog/coin-result.dialog": [
+    "C'est tombé sur {result}.",
+    "{result}."
+  ],
+  "/dialog/fortune-result.dialog": [
+    "{answer}"
+  ],
+  "/dialog/die-result.dialog": [
+    "Vous avez fait un {result}.",
+    "C'est un {result}."
+  ],
+  "/dialog/over-dice-limit.dialog": [
+    "Le maximum défini dans vos réglages est de {number}. Je vais donc en lancer {number}."
+  ],
+  "/dialog/fortune-query.dialog": [
+    "Que voulez-vous savoir ? Je répondrai par oui ou par non.",
+    "Posez votre question, si elle appelle un oui ou un non."
+  ],
+  "/dialog/second-choice.dialog": [
+    "Quelle est votre deuxième option ?",
+    "D'accord, quelle est la deuxième option ?"
+  ],
+  "/dialog/multiple-die-result.dialog": [
+    "Vos dés donnent {result_string}, pour un total de {result_total}."
+  ],
+  "/dialog/number-result.dialog": [
+    "{number}",
+    "D'accord, {number}.",
+    "Je choisis {number}."
+  ],
+  "/dialog/choice-result.dialog": [
+    "Choix difficile, mais je dirais {choice} !",
+    "Je choisis {choice}."
+  ],
+  "/dialog/number-range-not-specified.dialog": [
+    "Je n'ai pas bien compris les nombres, alors je vais choisir entre 1 et 10.",
+    "Je ne suis pas sûr des nombres entendus. Prenons entre 1 et 10."
+  ]
+}
