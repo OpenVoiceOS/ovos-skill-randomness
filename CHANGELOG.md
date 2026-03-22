@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a3) (2026-03-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a2...1.0.0a3)
+
+**Merged pull requests:**
+
+- chore\(deps\): update actions/setup-python action to v6 [\#32](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/32) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.0.0a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a2) (2026-03-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0...1.0.0a2)
