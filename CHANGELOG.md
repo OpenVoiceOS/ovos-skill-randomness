@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0a4](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a4) (2026-03-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a3...1.0.0a4)
+
+**Merged pull requests:**
+
+- chore\(deps\): update stefanzweifel/git-auto-commit-action action to v7 [\#33](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/33) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.0.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a3) (2026-03-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a2...1.0.0a3)
