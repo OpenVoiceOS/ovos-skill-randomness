@@ -1,20 +1,12 @@
 # Changelog
 
-## [1.0.0a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a1) (2026-03-04)
+## [1.0.0a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a2) (2026-03-22)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.3a1...1.0.0a1)
-
-**Breaking changes:**
-
-- feat!: remove icepool dependency [\#29](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/29) ([mikejgray](https://github.com/mikejgray))
-
-## [0.1.3a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/0.1.3a1) (2026-03-04)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/0.1.2...0.1.3a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0...1.0.0a2)
 
 **Merged pull requests:**
 
-- chore: Configure Renovate [\#24](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/24) ([renovate[bot]](https://github.com/apps/renovate))
+- Add French randomness locale [\#34](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/34) ([goldyfruit](https://github.com/goldyfruit))
 
 
 
