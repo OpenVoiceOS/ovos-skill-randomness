@@ -1,5 +1,5 @@
 languages:
-  - "en-us"
+  - "en-US"
 dialog:
   - fortune-result
   - choice-result
