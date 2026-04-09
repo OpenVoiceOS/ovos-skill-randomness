@@ -1,28 +1,25 @@
 # Changelog
 
-## [1.0.0a4](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a4) (2026-03-22)
+## [1.0.1a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.1a1) (2026-04-09)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a3...1.0.0a4)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a4...1.0.1a1)
 
 **Merged pull requests:**
 
-- chore\(deps\): update stefanzweifel/git-auto-commit-action action to v7 [\#33](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/33) ([renovate[bot]](https://github.com/apps/renovate))
+- chore: migrate to OVOS standard workflows [\#40](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/40) ([mikejgray](https://github.com/mikejgray))
+- Release 1.0.0a4 [\#37](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/37) ([github-actions[bot]](https://github.com/apps/github-actions))
+
+## [1.0.0a4](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a4) (2026-03-22)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a3...1.0.0a4)
 
 ## [1.0.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a3) (2026-03-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a2...1.0.0a3)
 
-**Merged pull requests:**
-
-- chore\(deps\): update actions/setup-python action to v6 [\#32](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/32) ([renovate[bot]](https://github.com/apps/renovate))
-
 ## [1.0.0a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a2) (2026-03-22)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0...1.0.0a2)
-
-**Merged pull requests:**
-
-- Add French randomness locale [\#34](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/34) ([goldyfruit](https://github.com/goldyfruit))
 
 
 
