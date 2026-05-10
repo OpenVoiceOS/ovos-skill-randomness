@@ -20,7 +20,7 @@
 #        - expected_vocab_key: expected_vocab_value
 #        - expected_entity_key: expected_entity_value
 
-en-us:
+en-US:
   fortune-teller.intent:
     - Tell me future
     - Tell me fortune
@@ -73,4 +73,4 @@ en-us:
         - lower: "20"
         - upper: "21"
 # unmatched intents:
-#       en-us:
+#       en-US:
