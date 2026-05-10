@@ -1,25 +1,12 @@
 # Changelog
 
-## [1.0.1a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.1a1) (2026-04-09)
+## [1.0.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.2a1) (2026-05-10)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a4...1.0.1a1)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.1...1.0.2a1)
 
 **Merged pull requests:**
 
-- chore: migrate to OVOS standard workflows [\#40](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/40) ([mikejgray](https://github.com/mikejgray))
-- Release 1.0.0a4 [\#37](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/37) ([github-actions[bot]](https://github.com/apps/github-actions))
-
-## [1.0.0a4](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a4) (2026-03-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a3...1.0.0a4)
-
-## [1.0.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a3) (2026-03-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0a2...1.0.0a3)
-
-## [1.0.0a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a2) (2026-03-22)
-
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.0...1.0.0a2)
+- fix\(i18n\): normalize locale folders to canonical BCP-47 [\#38](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/38) ([JarbasAl](https://github.com/JarbasAl))
 
 
 
