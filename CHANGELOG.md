@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.0a1) (2026-05-10)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.2a1...1.1.0a1)
+
+**Merged pull requests:**
+
+- feat\(i18n\): localize coin flip and fortune teller responses [\#47](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/47) ([mikejgray](https://github.com/mikejgray))
+
 ## [1.0.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.2a1) (2026-05-10)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.1...1.0.2a1)
