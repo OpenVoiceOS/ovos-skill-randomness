@@ -1,0 +1,3 @@
+roll [a|one] {faces} sided (die|dice)
+roll [a|one] d {faces}
+roll [a|one] (die|dice)

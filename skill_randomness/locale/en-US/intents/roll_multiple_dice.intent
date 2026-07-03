@@ -1,0 +1,3 @@
+roll {number} d {faces}
+roll {number} (dice|die)
+roll {number} (dice|die) with {faces} sides

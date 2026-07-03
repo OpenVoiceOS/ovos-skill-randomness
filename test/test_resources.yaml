@@ -1,25 +1,25 @@
 languages:
   - "en-US"
 dialog:
-  - fortune-result
-  - choice-result
-  - fortune-query
-  - number-result
-  - first-choice
-  - second-choice
-  - coin-result
-  - number-range-not-specified
-  - die-result
-  - multiple-die-result
+  - fortune_result
+  - choice_result
+  - fortune_query
+  - number_result
+  - first_choice
+  - second_choice
+  - coin_result
+  - number_range_not_specified
+  - die_result
+  - multiple_die_result
+  - over_dice_limit
 intents:
   padatious:
-    - fortune-teller.intent
-    - flip-a-coin.intent
-    - roll-dice.intent
-    - make-a-choice.intent
-    - pick-a-number.intent
-    - roll-single-die.intent
-    - roll-multiple-dice.intent
+    - fortune_teller.intent
+    - flip_a_coin.intent
+    - make_a_choice.intent
+    - pick_a_number.intent
+    - roll_single_die.intent
+    - roll_multiple_dice.intent
   adapt: []
 vocab: []
 regex: []
