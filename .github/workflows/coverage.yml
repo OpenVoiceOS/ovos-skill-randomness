@@ -12,6 +12,6 @@ jobs:
     with:
       python_version: '3.11'
       coverage_source: 'skill_randomness'
-      test_path: 'test/'
+      test_path: 'test/ --ignore=test/end2end'
       install_extras: ''
       min_coverage: 0
