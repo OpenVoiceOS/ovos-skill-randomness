@@ -26,6 +26,7 @@ test = [
     "padacioso",
     "ovos-padatious>=1.0.0",
     "ovoscope>=1.0.1a1",
+    "ovos-spec-tools",
 ]
 
 [project.urls]
