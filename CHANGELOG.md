@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.0a3) (2026-07-23)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.0a2...1.1.0a3)
+
+**Merged pull requests:**
+
+- chore: drop projen dependencies [\#53](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/53) ([mikejgray](https://github.com/mikejgray))
+
 ## [1.1.0a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.0a2) (2026-07-03)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.0a1...1.1.0a2)
