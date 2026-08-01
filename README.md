@@ -8,11 +8,19 @@
 
 ## About
 
-A skill for all kinds of chance - make a choice, roll a die, flip a coin, pick between two choices, etc.
+This OVOS skill handles chance-based requests. It makes a choice, rolls a die, flips a coin, and picks between two options.
 
-Accepts a single property: `die_limit`, which is the maximum number of dice that can be rolled at once. The default is 16.
+## Install
 
-`~/.config/mycroft/skills/skill-randomness.openvoiceos/settings.json`
+```console
+pip install ovos-skill-randomness
+```
+
+## Configuration
+
+The skill accepts one property, `die_limit`. This property sets the maximum number of dice you can roll at once. The default is 16.
+
+Set it in `~/.config/mycroft/skills/skill-randomness.openvoiceos/settings.json`:
 
 ```json
 {
@@ -32,6 +40,11 @@ Accepts a single property: `die_limit`, which is the maximum number of dice that
 - "Roll a 20 sided die"
 - "Roll 5 dice"
 - "Roll 6, 8 sided dice"
+
+## Related projects
+
+- [OpenVoiceOS/OpenVoiceOS](https://github.com/OpenVoiceOS/OpenVoiceOS) — the OVOS voice assistant platform this skill runs on.
+- [OpenVoiceOS/ovos-workshop](https://github.com/OpenVoiceOS/ovos-workshop) — the skill framework this skill builds on.
 
 ## Credits
 
@@ -55,3 +68,7 @@ The coin flipping sound came from [TheKnave at freesound.org](https://freesound.
 The fortune teller sound came from [LittleRainySeasons at freesound.org](https://freesound.org/people/LittleRainySeasons/sounds/335354/). It is licensed under the [Creative Commons 0 License](https://creativecommons.org/publicdomain/zero/1.0/).
 
 The dice rolling sound came from [dermotte at freesound.org](https://freesound.org/people/dermotte/sounds/220741/). It is licensed under the [Creative Commons 4 License](https://creativecommons.org/licenses/by/4.0/).
+
+## License
+
+This skill is available under the [MIT License](LICENSE).
