@@ -27,7 +27,12 @@ class TestRandomnessIntentsEnUS(unittest.TestCase):
         # Some handlers follow up with get_response, which blocks on a reply that
         # never arrives; end the capture as soon as the intent is matched so the
         # assertion covers routing without waiting on the conversational tail.
-        intent_msg = f"{SKILL_ID}:{intent_file}"
+        #
+        # The padatious pipeline plugin emits the matched-intent message type
+        # without the ".intent" file extension (e.g. "skill:pick-a-number",
+        # not "skill:pick-a-number.intent"); strip it here so the fixture
+        # tracks that naming instead of the on-disk intent filename.
+        intent_msg = f"{SKILL_ID}:{intent_file.removesuffix('.intent')}"
         session = Session("test-session")
         session.lang = LANG
         session.pipeline = [
