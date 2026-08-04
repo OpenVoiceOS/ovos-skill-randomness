@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovos-skill-randomness"
+dynamic = ["version"]
+description = "OVOS randomness skill: coin flips, dice rolls, random numbers, choices and fortunes"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "OpenVoiceOS", email = "mike@oscillatelabs.net" }]
+keywords = ["ovos", "skill", "voice", "assistant"]
+requires-python = ">=3.10"
+dependencies = [
+    "ovos-utils",
+    "ovos-workshop",
+    "ovos-number-parser>=0.0.1,<1.0.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-timeout",
+    "ovos-plugin-manager",
+    "padacioso",
+    "ovos-padatious>=1.0.0",
+    "ovoscope>=1.0.1a1",
+    "ovos-spec-tools",
+]
+
+[project.urls]
+Homepage = "https://github.com/OpenVoiceOS/ovos-skill-randomness"
+
+[project.entry-points."ovos.plugin.skill"]
+"skill-ovos-randomness.openvoiceos" = "skill_randomness:RandomnessSkill"
+
+[tool.setuptools]
+packages = ["skill_randomness"]
+
+[tool.setuptools.dynamic]
+version = { attr = "skill_randomness.version.__version__" }
+
+[tool.setuptools.package-data]
+skill_randomness = [
+    "locale/**",
+    "*.wav",
+    "*.mp3",
+    "*.json",
+]
+
+[tool.coverage.run]
+omit = ["*/version.py"]
+
+[tool.coverage.report]
+exclude_lines = ["if __name__ == .__main__.:"]
