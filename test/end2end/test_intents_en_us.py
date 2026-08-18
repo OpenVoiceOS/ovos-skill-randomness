@@ -27,7 +27,8 @@ class TestRandomnessIntentsEnUS(unittest.TestCase):
         # Some handlers follow up with get_response, which blocks on a reply that
         # never arrives; end the capture as soon as the intent is matched so the
         # assertion covers routing without waiting on the conversational tail.
-        intent_msg = f"{SKILL_ID}:{intent_file}"
+        intent_name = intent_file.removesuffix(".intent")
+        intent_msg = f"{SKILL_ID}:{intent_name}"
         session = Session("test-session")
         session.lang = LANG
         session.pipeline = [
@@ -45,16 +46,16 @@ class TestRandomnessIntentsEnUS(unittest.TestCase):
         self.assertIn(intent_msg, types)
 
     def test_choose_a_number_between_one_and_one_hundred(self):
-        self._assert_intent("choose a number between one and one hundred", "pick-a-number.intent")
+        self._assert_intent("choose a number between one and one hundred", "pick_a_number.intent")
 
     def test_pick_a_number_between_20_and_21(self):
-        self._assert_intent("pick a number between 20 and 21", "pick-a-number.intent")
+        self._assert_intent("pick a number between 20 and 21", "pick_a_number.intent")
 
     def test_flip_a_coin(self):
-        self._assert_intent("flip a coin", "flip-a-coin.intent")
+        self._assert_intent("flip a coin", "flip_a_coin.intent")
 
     def test_roll_a_20_sided_die(self):
-        self._assert_intent("roll a 20 sided die", "roll-single-die.intent")
+        self._assert_intent("roll a 20 sided die", "roll_single_die.intent")
 
     def test_roll_a_die(self):
-        self._assert_intent("roll a die", "roll-single-die.intent")
+        self._assert_intent("roll a die", "roll_single_die.intent")

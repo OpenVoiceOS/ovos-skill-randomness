@@ -21,56 +21,56 @@
 #        - expected_entity_key: expected_entity_value
 
 en-US:
-  fortune-teller.intent:
-    - Tell me future
-    - Tell me fortune
-    - Tell me my future
-    - Tell me my fortune
-    - Tell me a future
-    - Tell me a fortune
-    - Tell me the future
-    - Tell me the fortune
-  flip-a-coin.intent:
+  fortune_teller.intent:
+    - tell me the future
+    - tell me my fortune
+    - tell me a fortune
+    - ask the magic eight ball
+    - ask the 8 ball
+    - shake the magic eight ball
+    - consult the eight ball
+  flip_a_coin.intent:
     - flip a coin
-  roll-single-die.intent:
+    - toss a coin
+    - throw a coin
+    - heads or tails
+  make_a_choice.intent:
+    - help me make a choice
+    - help me make a decision
+    - help me decide
+    - decide for me
+    - choose for me
+  pick_a_number.intent:
+    - pick a random number
+    - give me a number
+    - generate a random number
+    - pick a number between 3 and 7:
+        - lower: "3"
+        - upper: "7"
+    - choose a number between one and one hundred:
+        - lower: one
+        - upper: one hundred
+    - give me a number from 20 to 21:
+        - lower: "20"
+        - upper: "21"
+  roll_single_die.intent:
+    - roll a die
+    - roll die
+    - roll a dice
     - roll a 20 sided die:
         - faces: "20"
     - roll a 20 sided dice:
         - faces: "20"
-    - roll a die:
+    - roll a d 6:
         - faces: "6"
-    - roll die:
-        - faces: "6"
-    - roll a dice:
-        - faces: "6"
-  roll-multiple-dice.intent:
+  roll_multiple_dice.intent:
     - roll 6 d 20:
         - number: "6"
         - faces: "20"
-    - roll 6 20 sided die:
-        - number: "6"
-        - faces: "20"
-    - roll 6 20 sided dice:
-        - number: "6"
-        - faces: "20"
-    - roll 6 die:
-        - number: "6"
-        - faces: "6"
     - roll 6 dice:
         - number: "6"
-        - faces: "6"
-  make-a-choice.intent:
-    - help me make a choice
-    - help me decide something
-  pick-a-number.intent:
-    - choose a number between one and one hundred:
-        - lower: one
-        - upper: one hundred
-    - select a number between 3 and 7:
-        - lower: "3"
-        - upper: "7"
-    - pick a number between 20 and 21:
-        - lower: "20"
-        - upper: "21"
-# unmatched intents:
-#       en-US:
+    - roll 6 die:
+        - number: "6"
+    - roll 3 dice with 20 sides:
+        - number: "3"
+        - faces: "20"

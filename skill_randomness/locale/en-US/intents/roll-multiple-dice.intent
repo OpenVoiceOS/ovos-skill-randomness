@@ -1,3 +1,0 @@
-roll {number} d {faces}
-roll {number} {faces} sided (dice|die)
-roll {number} (dice|die)

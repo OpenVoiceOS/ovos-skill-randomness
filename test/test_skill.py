@@ -2,8 +2,9 @@
 import shutil
 from json import dumps
 from os import environ, getenv, makedirs
-from os.path import join, dirname, isdir
-from unittest.mock import Mock, patch, PropertyMock
+from os.path import dirname, isdir, join
+from unittest.mock import Mock, PropertyMock, patch
+
 import pytest
 from ovos_bus_client.message import Message
 from ovos_plugin_manager.skills import find_skill_plugins
@@ -59,59 +60,59 @@ class TestRandomnessSkill:
         f.write(dumps({"Audio": {"backends": {"ocp": {"active": False}}}}))
 
     def test_flip_a_coin(self, test_skill, reset_skill_mocks):
-        test_skill.handle_flip_a_coin(Message("flip-a-coin.intent"))
+        test_skill.handle_flip_a_coin(Message("flip_a_coin.intent"))
         test_skill.speak_dialog.assert_called_once()
         dialog, data = test_skill.speak_dialog.call_args[0][0], test_skill.speak_dialog.call_args[1]["data"]
-        assert dialog == "coin-result"
+        assert dialog == "coin_result"
         expected = test_skill.voc_list("heads") + test_skill.voc_list("tails")
         assert expected, "voc files for heads/tails must be loadable"
         assert data["result"] in expected
 
     def test_pick_a_number_with_range(self, test_skill, reset_skill_mocks):
-        test_skill.handle_pick_a_number(Message("pick-a-number.intent", data={"lower": "3", "upper": "7"}))
+        test_skill.handle_pick_a_number(Message("pick_a_number.intent", data={"lower": "3", "upper": "7"}))
         test_skill.speak_dialog.assert_called_once()
         dialog, data = test_skill.speak_dialog.call_args[0][0], test_skill.speak_dialog.call_args[1]["data"]
-        assert dialog == "number-result"
+        assert dialog == "number_result"
         assert 3 <= data["number"] <= 7
 
     def test_pick_a_number_no_range(self, test_skill, reset_skill_mocks):
-        test_skill.handle_pick_a_number(Message("pick-a-number.intent", data={}))
+        test_skill.handle_pick_a_number(Message("pick_a_number.intent", data={}))
         dialogs_called = [c[0][0] for c in test_skill.speak_dialog.call_args_list]
-        assert "number-range-not-specified" in dialogs_called
-        assert "number-result" in dialogs_called
-        result_call = next(c for c in test_skill.speak_dialog.call_args_list if c[0][0] == "number-result")
+        assert "number_range_not_specified" in dialogs_called
+        assert "number_result" in dialogs_called
+        result_call = next(c for c in test_skill.speak_dialog.call_args_list if c[0][0] == "number_result")
         assert 1 <= result_call[1]["data"]["number"] <= 10
 
     def test_roll_single_die_default(self, test_skill, reset_skill_mocks):
-        test_skill.handle_roll_single_die(Message("roll-single-die.intent", data={"faces": "6"}))
+        test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={"faces": "6"}))
         test_skill.speak_dialog.assert_called_once()
         dialog, data = test_skill.speak_dialog.call_args[0][0], test_skill.speak_dialog.call_args[1]["data"]
-        assert dialog == "die-result"
+        assert dialog == "die_result"
         assert 1 <= data["result"] <= 6
 
     def test_roll_single_die_custom_faces(self, test_skill, reset_skill_mocks):
-        test_skill.handle_roll_single_die(Message("roll-single-die.intent", data={"faces": "20"}))
+        test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={"faces": "20"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert 1 <= data["result"] <= 20
 
     @pytest.mark.parametrize("bad_value", [None, False])
     def test_roll_single_die_extract_number_fallback(self, test_skill, reset_skill_mocks, bad_value):
         with patch("skill_randomness.extract_number", return_value=bad_value):
-            test_skill.handle_roll_single_die(Message("roll-single-die.intent", data={"faces": "six"}))
+            test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={"faces": "six"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert 1 <= data["result"] <= 6  # fell back to d6
 
     @pytest.mark.parametrize("bad_value", [None, False])
     def test_roll_multiple_dice_extract_number_fallback(self, test_skill, reset_skill_mocks, bad_value):
         with patch("skill_randomness.extract_number", return_value=bad_value):
-            test_skill.handle_roll_multiple_dice(Message("roll-multiple-dice.intent", data={"number": "several", "faces": "six"}))
+            test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": "several", "faces": "six"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         rolls = data["result_string"].split(", ")
         assert len(rolls) == 1  # fell back to 1 die
         assert 1 <= int(rolls[0]) <= 6  # fell back to d6
 
     def test_roll_multiple_dice(self, test_skill, reset_skill_mocks):
-        test_skill.handle_roll_multiple_dice(Message("roll-multiple-dice.intent", data={"number": "3", "faces": "6"}))
+        test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": "3", "faces": "6"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         rolls = data["result_string"].split(", ")
         assert len(rolls) == 3
@@ -120,25 +121,25 @@ class TestRandomnessSkill:
 
     def test_roll_multiple_dice_over_limit(self, test_skill, reset_skill_mocks):
         over_limit = test_skill.die_limit + 5
-        test_skill.handle_roll_multiple_dice(Message("roll-multiple-dice.intent", data={"number": str(over_limit), "faces": "6"}))
+        test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": str(over_limit), "faces": "6"}))
         dialogs_called = [c[0][0] for c in test_skill.speak_dialog.call_args_list]
-        assert "over-dice-limit" in dialogs_called
-        result_call = next(c for c in test_skill.speak_dialog.call_args_list if c[0][0] == "multiple-die-result")
+        assert "over_dice_limit" in dialogs_called
+        result_call = next(c for c in test_skill.speak_dialog.call_args_list if c[0][0] == "multiple_die_result")
         rolls = result_call[1]["data"]["result_string"].split(", ")
         assert len(rolls) == test_skill.die_limit
 
     def test_make_a_choice(self, test_skill, reset_skill_mocks):
         test_skill.get_response = Mock(side_effect=["pizza", "tacos"])
-        test_skill.handle_make_a_choice_intent(Message("make-a-choice.intent"))
+        test_skill.handle_make_a_choice_intent(Message("make_a_choice.intent"))
         dialog, data = test_skill.speak_dialog.call_args[0][0], test_skill.speak_dialog.call_args[1]["data"]
-        assert dialog == "choice-result"
+        assert dialog == "choice_result"
         assert data["choice"] in ("pizza", "tacos")
 
     def test_fortune_teller(self, test_skill, reset_skill_mocks):
         test_skill.get_response = Mock(return_value="will it rain tomorrow")
-        test_skill.handle_fortune_teller(Message("fortune-teller.intent"))
+        test_skill.handle_fortune_teller(Message("fortune_teller.intent"))
         test_skill.speak_dialog.assert_called_once()
-        assert test_skill.speak_dialog.call_args[0][0] == "fortune-result"
+        assert test_skill.speak_dialog.call_args[0][0] == "fortune_result"
         expected = test_skill.voc_list("yes") + test_skill.voc_list("no")
         assert expected, "voc files for yes/no must be loadable"
         assert test_skill.speak_dialog.call_args[0][1]["answer"] in expected
@@ -159,27 +160,27 @@ class TestLocalization:
 
     def test_fr_coin_flip_uses_french(self, test_skill, reset_skill_mocks):
         _switch_skill_lang(test_skill, "fr-FR")
-        test_skill.handle_flip_a_coin(_msg("flip-a-coin.intent", "fr-FR"))
+        test_skill.handle_flip_a_coin(_msg("flip_a_coin.intent", "fr-FR"))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert data["result"] in ("pile", "face")
 
     def test_fr_fortune_uses_french(self, test_skill, reset_skill_mocks):
         _switch_skill_lang(test_skill, "fr-FR")
         test_skill.get_response = Mock(return_value="est-ce qu'il va pleuvoir")
-        test_skill.handle_fortune_teller(_msg("fortune-teller.intent", "fr-FR"))
+        test_skill.handle_fortune_teller(_msg("fortune_teller.intent", "fr-FR"))
         data = test_skill.speak_dialog.call_args[0][1]
         assert data["answer"] in ("oui", "non")
 
     def test_unsupported_locale_falls_back_to_english(self, test_skill, reset_skill_mocks):
         _switch_skill_lang(test_skill, "pt-BR")
-        test_skill.handle_flip_a_coin(_msg("flip-a-coin.intent", "pt-BR"))
+        test_skill.handle_flip_a_coin(_msg("flip_a_coin.intent", "pt-BR"))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert data["result"] in ("heads", "tails")
 
     def test_unsupported_locale_fortune_falls_back_to_english(self, test_skill, reset_skill_mocks):
         _switch_skill_lang(test_skill, "pt-BR")
         test_skill.get_response = Mock(return_value="will it rain")
-        test_skill.handle_fortune_teller(_msg("fortune-teller.intent", "pt-BR"))
+        test_skill.handle_fortune_teller(_msg("fortune_teller.intent", "pt-BR"))
         data = test_skill.speak_dialog.call_args[0][1]
         assert data["answer"] in ("yes", "no")
 
