@@ -37,7 +37,7 @@
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.0.1...1.0.2a1)
 
-**Merged pull requests:**
+## [1.0.0a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.0.0a3) (2026-03-22)
 
 - fix\(i18n\): normalize locale folders to canonical BCP-47 [\#38](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/38) ([JarbasAl](https://github.com/JarbasAl))
 
