@@ -63,7 +63,9 @@ class TestRandomnessSkill:
         test_skill.speak_dialog.assert_called_once()
         dialog, data = test_skill.speak_dialog.call_args[0][0], test_skill.speak_dialog.call_args[1]["data"]
         assert dialog == "coin-result"
-        assert data["result"] in ("heads", "tails")
+        expected = test_skill.voc_list("heads") + test_skill.voc_list("tails")
+        assert expected, "voc files for heads/tails must be loadable"
+        assert data["result"] in expected
 
     def test_pick_a_number_with_range(self, test_skill, reset_skill_mocks):
         test_skill.handle_pick_a_number(Message("pick-a-number.intent", data={"lower": "3", "upper": "7"}))
@@ -137,7 +139,49 @@ class TestRandomnessSkill:
         test_skill.handle_fortune_teller(Message("fortune-teller.intent"))
         test_skill.speak_dialog.assert_called_once()
         assert test_skill.speak_dialog.call_args[0][0] == "fortune-result"
-        assert test_skill.speak_dialog.call_args[0][1]["answer"] in ("yes", "no")
+        expected = test_skill.voc_list("yes") + test_skill.voc_list("no")
+        assert expected, "voc files for yes/no must be loadable"
+        assert test_skill.speak_dialog.call_args[0][1]["answer"] in expected
+
+
+def _switch_skill_lang(skill, lang):
+    """Reload resources and clear voc cache for a different locale."""
+    skill._resources = skill.load_lang(skill.root_dir, lang)
+    skill._voc_cache = {}
+
+
+def _msg(intent, lang):
+    return Message(intent, context={"session": {"lang": lang}})
+
+
+class TestLocalization:
+    """Verify coin flip and fortune teller use locale-appropriate vocab."""
+
+    def test_fr_coin_flip_uses_french(self, test_skill, reset_skill_mocks):
+        _switch_skill_lang(test_skill, "fr-FR")
+        test_skill.handle_flip_a_coin(_msg("flip-a-coin.intent", "fr-FR"))
+        data = test_skill.speak_dialog.call_args[1]["data"]
+        assert data["result"] in ("pile", "face")
+
+    def test_fr_fortune_uses_french(self, test_skill, reset_skill_mocks):
+        _switch_skill_lang(test_skill, "fr-FR")
+        test_skill.get_response = Mock(return_value="est-ce qu'il va pleuvoir")
+        test_skill.handle_fortune_teller(_msg("fortune-teller.intent", "fr-FR"))
+        data = test_skill.speak_dialog.call_args[0][1]
+        assert data["answer"] in ("oui", "non")
+
+    def test_unsupported_locale_falls_back_to_english(self, test_skill, reset_skill_mocks):
+        _switch_skill_lang(test_skill, "pt-BR")
+        test_skill.handle_flip_a_coin(_msg("flip-a-coin.intent", "pt-BR"))
+        data = test_skill.speak_dialog.call_args[1]["data"]
+        assert data["result"] in ("heads", "tails")
+
+    def test_unsupported_locale_fortune_falls_back_to_english(self, test_skill, reset_skill_mocks):
+        _switch_skill_lang(test_skill, "pt-BR")
+        test_skill.get_response = Mock(return_value="will it rain")
+        test_skill.handle_fortune_teller(_msg("fortune-teller.intent", "pt-BR"))
+        data = test_skill.speak_dialog.call_args[0][1]
+        assert data["answer"] in ("yes", "no")
 
 
 def test_skill_is_a_valid_plugin():

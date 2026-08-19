@@ -50,7 +50,8 @@ class RandomnessSkill(OVOSSkill):
     def handle_flip_a_coin(self, message: Message):  # pylint: disable=unused-argument
         """Flip a coin."""
         self.play_audio(f"{dirname(__file__)}/coin-flip.wav")
-        result = choice(["heads", "tails"])
+        result = choice([choice(self.voc_list("heads") or ["heads"]),
+                         choice(self.voc_list("tails") or ["tails"])])
         self.speak_dialog("coin-result", data={"result": result})
         self.gui.show_text(result)
         self.enclosure.system_blink(3)
@@ -61,7 +62,8 @@ class RandomnessSkill(OVOSSkill):
         """Get a random fortune."""
         self.play_audio(f"{dirname(__file__)}/magic.mp3")
         fortune = self.get_response("fortune-query")
-        answer = choice(["yes", "no"])
+        answer = choice([choice(self.voc_list("yes") or ["yes"]),
+                         choice(self.voc_list("no") or ["no"])])
         self.speak_dialog("fortune-result", {"answer": answer})
         fortune_with_answer = f"{fortune}? ...{answer}"
         self.gui.show_text(fortune_with_answer)
