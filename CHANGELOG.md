@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.1a3) (2026-09-04)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.1a2...1.1.1a3)
+
+**Merged pull requests:**
+
+- test: golden-utterance e2e coverage [\#58](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/58) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [1.1.1a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.1a2) (2026-08-26)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.1a1...1.1.1a2)
