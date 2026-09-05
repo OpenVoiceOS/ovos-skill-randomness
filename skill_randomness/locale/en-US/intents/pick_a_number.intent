@@ -1,1 +1,3 @@
-(pick|select|choose) a number between {lower} and {upper}
+(pick|select|choose|give me|generate) a [random] number
+(pick|select|choose|give me) a number between {lower} and {upper}
+(pick|select|choose|give me) a number from {lower} to {upper}
