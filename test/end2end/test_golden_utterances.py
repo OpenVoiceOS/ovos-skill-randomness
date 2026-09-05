@@ -52,7 +52,7 @@ GOLDEN_PATH = Path(__file__).parent / "golden_utterances.jsonl"
 # intents whose handler calls self.get_response(): ovoscope's synchronous
 # FakeBus blocks the emitting thread forever when nothing answers the
 # follow-up prompt (see module docstring point 2).
-_GET_RESPONSE_INTENTS = {"make-a-choice.intent", "fortune-teller.intent"}
+_GET_RESPONSE_INTENTS = {"make_a_choice.intent", "fortune_teller.intent"}
 _GET_RESPONSE_REASON = (
     "coverage gap: make-a-choice.intent/fortune-teller.intent call "
     "self.get_response(), which blocks the emitting thread forever on "
