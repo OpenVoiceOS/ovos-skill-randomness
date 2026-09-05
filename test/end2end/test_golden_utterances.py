@@ -22,13 +22,12 @@ Two real findings came out of building this suite:
    samples' training succeeding (the failure mode was training-time, not
    phrasing-time).
 2. ``make-a-choice.intent`` and ``fortune-teller.intent`` both call
-   ``self.get_response()``. On ovoscope's synchronous FakeBus that blocks
-   the emitting thread forever when nothing answers the follow-up prompt —
-   the existing hand-written ``test_intents_en_us.py`` silently omits both
-   intents for the same reason. Capture below runs in a daemon thread with
-   a hard join timeout so the hang degrades to a clean, reported "TIMEOUT"
-   instead of wedging the test run, and the corresponding golden rows are
-   marked ``xfail(strict=True)`` with that exact reason.
+   ``self.get_response()``, which needs a real ``Session`` (with a resolvable
+   ``session_id``) to route the follow-up prompt back to the same capture
+   rather than blocking the emitting thread forever on ovoscope's synchronous
+   FakeBus. Capture below runs in a daemon thread with a hard join timeout so
+   a genuine hang still degrades to a clean, reported "TIMEOUT" instead of
+   wedging the test run.
 """
 import json
 import threading
@@ -48,18 +47,6 @@ _PIPELINE = [
 ]
 
 GOLDEN_PATH = Path(__file__).parent / "golden_utterances.jsonl"
-
-# intents whose handler calls self.get_response(): ovoscope's synchronous
-# FakeBus blocks the emitting thread forever when nothing answers the
-# follow-up prompt (see module docstring point 2).
-_GET_RESPONSE_INTENTS = {"make-a-choice.intent", "fortune-teller.intent"}
-_GET_RESPONSE_REASON = (
-    "coverage gap: make-a-choice.intent/fortune-teller.intent call "
-    "self.get_response(), which blocks the emitting thread forever on "
-    "ovoscope's synchronous FakeBus when nothing answers the follow-up "
-    "prompt (existing test_intents_en_us.py omits both intents for the "
-    "same reason). See module docstring for full evidence."
-)
 
 # utterances lifted verbatim from OTHER skills' golden-utterance slices,
 # picked for lexical overlap with this skill's "random"/"number" vocabulary.
@@ -94,14 +81,7 @@ def _golden_id(row):
     return row["utterance"]
 
 
-def _golden_param(row):
-    marks = []
-    if row["intent_label"] in _GET_RESPONSE_INTENTS:
-        marks.append(pytest.mark.xfail(reason=_GET_RESPONSE_REASON, strict=True))
-    return pytest.param(row, id=_golden_id(row), marks=marks)
-
-
-GOLDEN_PARAMS = [_golden_param(row) for row in GOLDEN_ROWS]
+GOLDEN_PARAMS = [pytest.param(row, id=_golden_id(row)) for row in GOLDEN_ROWS]
 
 
 @pytest.fixture(scope="module")

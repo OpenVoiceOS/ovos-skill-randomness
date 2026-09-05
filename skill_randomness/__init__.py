@@ -1,11 +1,10 @@
 """A skill for all kinds of chance - make a choice, roll a die, flip a coin, etc."""
 from os.path import dirname
 from random import choice, randint
-from typing import List
 
 from ovos_bus_client.message import Message
-from ovos_workshop.decorators import intent_handler
 from ovos_number_parser import extract_number
+from ovos_workshop.decorators import intent_handler
 from ovos_workshop.skills import OVOSSkill
 
 
@@ -16,18 +15,18 @@ class RandomnessSkill(OVOSSkill):
     def die_limit(self):
         return self.settings.get("die_limit", 16)
 
-    @intent_handler("make-a-choice.intent")
+    @intent_handler("make_a_choice.intent")
     def handle_make_a_choice_intent(self, message: Message):  # pylint: disable=unused-argument
         """Decide between two things."""
-        first_choice = self.get_response("first-choice") or "the first one"
-        second_choice = self.get_response("second-choice") or "the second one"
+        first_choice = self.get_response("first_choice") or "the first one"
+        second_choice = self.get_response("second_choice") or "the second one"
         result = choice([first_choice, second_choice])
-        self.speak_dialog("choice-result", data={"choice": result})
+        self.speak_dialog("choice_result", data={"choice": result})
         self.gui.show_text(result)
         self.enclosure.eyes_blink("b")
         self.enclosure.mouth_text(result)
 
-    @intent_handler("pick-a-number.intent")
+    @intent_handler("pick_a_number.intent")
     def handle_pick_a_number(self, message: Message):
         """Pick a number between two numbers."""
         lower_bound = message.data.get("lower", "")
@@ -39,61 +38,61 @@ class RandomnessSkill(OVOSSkill):
         except ValueError:
             lower_bound = 1
             upper_bound = 10
-            self.speak_dialog("number-range-not-specified")
+            self.speak_dialog("number_range_not_specified")
         result = randint(lower_bound, upper_bound)
-        self.speak_dialog("number-result", data={"number": result})
+        self.speak_dialog("number_result", data={"number": result})
         self.gui.show_text(str(result))
         self.enclosure.eyes_spin()
         self.enclosure.mouth_text(str(result))
 
-    @intent_handler("flip-a-coin.intent")
+    @intent_handler("flip_a_coin.intent")
     def handle_flip_a_coin(self, message: Message):  # pylint: disable=unused-argument
         """Flip a coin."""
         self.play_audio(f"{dirname(__file__)}/coin-flip.wav")
         result = choice([choice(self.voc_list("heads") or ["heads"]),
                          choice(self.voc_list("tails") or ["tails"])])
-        self.speak_dialog("coin-result", data={"result": result})
+        self.speak_dialog("coin_result", data={"result": result})
         self.gui.show_text(result)
         self.enclosure.system_blink(3)
         self.enclosure.mouth_text(result)
 
-    @intent_handler("fortune-teller.intent")
+    @intent_handler("fortune_teller.intent")
     def handle_fortune_teller(self, message: Message):  # pylint: disable=unused-argument
         """Get a random fortune."""
         self.play_audio(f"{dirname(__file__)}/magic.mp3")
-        fortune = self.get_response("fortune-query")
+        fortune = self.get_response("fortune_query")
         answer = choice([choice(self.voc_list("yes") or ["yes"]),
                          choice(self.voc_list("no") or ["no"])])
-        self.speak_dialog("fortune-result", {"answer": answer})
+        self.speak_dialog("fortune_result", {"answer": answer})
         fortune_with_answer = f"{fortune}? ...{answer}"
         self.gui.show_text(fortune_with_answer)
         self.enclosure.eyes_spin()
         self.enclosure.mouth_text(fortune_with_answer)
 
-    @intent_handler("roll-single-die.intent")
+    @intent_handler("roll_single_die.intent")
     def handle_roll_single_die(self, message: Message):
         """Roll a single die."""
         faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         self.log.debug(f"Rolling a die with {faces} faces")
         result = randint(1, faces)
-        self.speak_dialog("die-result", data={"result": result})
+        self.speak_dialog("die_result", data={"result": result})
         self.gui.show_text(str(result))
         self.enclosure.eyes_spin()
         self.enclosure.mouth_text(str(result))
 
-    @intent_handler("roll-multiple-dice.intent")
+    @intent_handler("roll_multiple_dice.intent")
     def handle_roll_multiple_dice(self, message: Message):
         """Roll multiple dice."""
         number = int(extract_number(message.data.get("number"), lang=self.lang) or 1)
         faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         if number > self.die_limit:
-            self.speak_dialog("over-dice-limit", data={"number": self.die_limit})
+            self.speak_dialog("over_dice_limit", data={"number": self.die_limit})
             number = self.die_limit
         self.log.debug(f"Rolling {number} dice with {faces} faces")
-        result_list: List[int] = []
+        result_list: list[int] = []
         for _ in range(1, number + 1):
             val = randint(1, faces)
             result_list.append(val)
-        self.speak_dialog("multiple-die-result", data={"result_string": ", ".join([str(x) for x in result_list]), "result_total": str(sum(result_list))})
+        self.speak_dialog("multiple_die_result", data={"result_string": ", ".join([str(x) for x in result_list]), "result_total": str(sum(result_list))})
