@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.0a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.0a1) (2026-09-07)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.1a3...2.0.0a1)
+
+**Breaking changes:**
+
+- feat\(intents\)!: spec-conformant intent definitions and resource names [\#51](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/51) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [1.1.1a3](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/1.1.1a3) (2026-09-04)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.1a2...1.1.1a3)
