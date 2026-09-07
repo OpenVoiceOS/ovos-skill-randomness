@@ -1,7 +1,0 @@
-pytest
-pytest-cov
-pytest-timeout
-ovos-plugin-manager
-padacioso
-ovoscope>=1.0.1a1
-ovos-padatious>=1.0.0

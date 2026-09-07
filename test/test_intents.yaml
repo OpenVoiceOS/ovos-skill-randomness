@@ -21,7 +21,7 @@
 #        - expected_entity_key: expected_entity_value
 
 en-US:
-  fortune-teller.intent:
+  fortune_teller.intent:
     - Tell me future
     - Tell me fortune
     - Tell me my future
@@ -30,9 +30,9 @@ en-US:
     - Tell me a fortune
     - Tell me the future
     - Tell me the fortune
-  flip-a-coin.intent:
+  flip_a_coin.intent:
     - flip a coin
-  roll-single-die.intent:
+  roll_single_die.intent:
     - roll a 20 sided die:
         - faces: "20"
     - roll a 20 sided dice:
@@ -43,7 +43,7 @@ en-US:
         - faces: "6"
     - roll a dice:
         - faces: "6"
-  roll-multiple-dice.intent:
+  roll_multiple_dice.intent:
     - roll 6 d 20:
         - number: "6"
         - faces: "20"
@@ -59,10 +59,10 @@ en-US:
     - roll 6 dice:
         - number: "6"
         - faces: "6"
-  make-a-choice.intent:
+  make_a_choice.intent:
     - help me make a choice
     - help me decide something
-  pick-a-number.intent:
+  pick_a_number.intent:
     - choose a number between one and one hundred:
         - lower: one
         - upper: one hundred
