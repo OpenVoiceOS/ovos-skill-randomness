@@ -6,6 +6,7 @@ from os.path import join, dirname, isdir
 from unittest.mock import Mock, patch, PropertyMock
 import pytest
 from ovos_bus_client.message import Message
+from ovos_bus_client.session import Session
 from ovos_plugin_manager.skills import find_skill_plugins
 from ovos_utils.fakebus import FakeBus
 
@@ -151,7 +152,7 @@ def _switch_skill_lang(skill, lang):
 
 
 def _msg(intent, lang):
-    return Message(intent, context={"session": {"lang": lang}})
+    return Message(intent, context={"session": Session(lang=lang).serialize()})
 
 
 class TestLocalization:
