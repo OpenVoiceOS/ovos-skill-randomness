@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.1a1) (2026-09-07)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.0a1...2.0.1a1)
+
+**Merged pull requests:**
+
+- fix: build a real session in the localization test helper [\#66](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/66) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.0.0a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.0a1) (2026-09-07)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/1.1.1a3...2.0.0a1)
