@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a1) (2026-09-09)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.1a1...2.0.2a1)
+
+**Merged pull requests:**
+
+- fix: name da-DK, sv-SE and kab resources the way the skill looks them up [\#67](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/67) ([JarbasAl](https://github.com/JarbasAl))
+
 ## [2.0.1a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.1a1) (2026-09-07)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.0a1...2.0.1a1)
