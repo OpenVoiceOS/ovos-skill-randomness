@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.2a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a2) (2026-09-21)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.2a1...2.0.2a2)
+
+**Merged pull requests:**
+
+- translate\(kab\): update number\_range\_not\_specified.dialog [\#69](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/69) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+
 ## [2.0.2a1](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a1) (2026-09-09)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.1a1...2.0.2a1)
