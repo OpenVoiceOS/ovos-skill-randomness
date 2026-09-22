@@ -96,6 +96,22 @@ class TestRandomnessSkill:
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert 1 <= data["result"] <= 20
 
+    def test_roll_single_die_no_faces_slot_defaults_to_six(self, test_skill, reset_skill_mocks):
+        # "roll a die" carries no {faces} slot at all; the handler must
+        # still default to a d6 rather than raising or rolling unbounded.
+        test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={}))
+        data = test_skill.speak_dialog.call_args[1]["data"]
+        assert 1 <= data["result"] <= 6
+
+    def test_roll_multiple_dice_no_faces_slot_defaults_to_six(self, test_skill, reset_skill_mocks):
+        # "roll 6 dice" carries no {faces} slot at all; the handler must
+        # still default to d6 for every die rolled.
+        test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": "6"}))
+        data = test_skill.speak_dialog.call_args[1]["data"]
+        rolls = [int(r) for r in data["result_string"].split(", ")]
+        assert len(rolls) == 6
+        assert all(1 <= r <= 6 for r in rolls)
+
     @pytest.mark.parametrize("bad_value", [None, False])
     def test_roll_single_die_extract_number_fallback(self, test_skill, reset_skill_mocks, bad_value):
         with patch("skill_randomness.extract_number", return_value=bad_value):

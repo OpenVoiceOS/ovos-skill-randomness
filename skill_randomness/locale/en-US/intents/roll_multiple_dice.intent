@@ -1,3 +1,11 @@
+# "roll {number} {faces} sided (dice|die)" (no separator between the two
+# number slots, e.g. "roll 6 20 sided dice") cannot be added here: OVOS-INTENT-1
+# §5 requires a literal word between any two slots in every sample, and
+# ovos_spec_tools rejects the line at registration. Do not re-add it or the
+# dropped "roll 6 20 sided die"/"roll 6 20 sided dice" test assertions; that
+# phrasing is not templatable and currently falls through to
+# "roll {number} (dice|die)" with the trailing words folded into {number}.
 roll {number} d {faces}
-roll {number} of {faces} sided (dice|die)
 roll {number} (dice|die)
+roll {number} (dice|die) with {faces} sides
+roll {number} of {faces} sided (dice|die)
