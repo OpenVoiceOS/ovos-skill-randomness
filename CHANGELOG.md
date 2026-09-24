@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.2a7](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a7) (2026-09-24)
+
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.2a2...2.0.2a7)
+
+**Merged pull requests:**
+
+- translate\(kab\): update second\_choice.dialog [\#73](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/73) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+- translate\(kab\): update fortune\_result.dialog [\#72](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/72) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+- translate\(kab\): update roll\_multiple\_dice.intent [\#71](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/71) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+- translate\(kab\): update flip\_a\_coin.intent [\#70](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/70) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+- translate\(kab\): update choice\_result.dialog [\#68](https://github.com/OpenVoiceOS/ovos-skill-randomness/pull/68) ([ovos-localize[bot]](https://github.com/apps/ovos-localize))
+
 ## [2.0.2a2](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a2) (2026-09-21)
 
 [Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.2a1...2.0.2a2)
