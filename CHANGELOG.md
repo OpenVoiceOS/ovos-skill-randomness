@@ -1,8 +1,8 @@
 # Changelog
 
-## [2.0.2a5](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a5) (2026-09-24)
+## [2.0.2a4](https://github.com/OpenVoiceOS/ovos-skill-randomness/tree/2.0.2a4) (2026-09-24)
 
-[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.2a2...2.0.2a5)
+[Full Changelog](https://github.com/OpenVoiceOS/ovos-skill-randomness/compare/2.0.2a2...2.0.2a4)
 
 **Merged pull requests:**
 
