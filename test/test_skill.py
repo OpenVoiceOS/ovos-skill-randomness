@@ -173,15 +173,15 @@ class TestLocalization:
         assert data["answer"] in ("oui", "non")
 
     def test_unsupported_locale_falls_back_to_english(self, test_skill, reset_skill_mocks):
-        _switch_skill_lang(test_skill, "pt-BR")
-        test_skill.handle_flip_a_coin(_msg("flip_a_coin.intent", "pt-BR"))
+        _switch_skill_lang(test_skill, "ja-JP")
+        test_skill.handle_flip_a_coin(_msg("flip_a_coin.intent", "ja-JP"))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert data["result"] in ("heads", "tails")
 
     def test_unsupported_locale_fortune_falls_back_to_english(self, test_skill, reset_skill_mocks):
-        _switch_skill_lang(test_skill, "pt-BR")
+        _switch_skill_lang(test_skill, "ja-JP")
         test_skill.get_response = Mock(return_value="will it rain")
-        test_skill.handle_fortune_teller(_msg("fortune_teller.intent", "pt-BR"))
+        test_skill.handle_fortune_teller(_msg("fortune_teller.intent", "ja-JP"))
         data = test_skill.speak_dialog.call_args[0][1]
         assert data["answer"] in ("yes", "no")
 
