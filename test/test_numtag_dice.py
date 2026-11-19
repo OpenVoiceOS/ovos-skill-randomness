@@ -32,6 +32,12 @@ MULTIPLE = [
     ("sv-SE", "sv-se", "kasta fyra tärningar med tjugo sidor", 4, 20),
 ]
 
+# two numbers in the slot: the first one is the number of dice
+TWO_NUMBERS = [
+    ("en-US", "en-us", "roll two or three dice", 2),
+    ("fr-FR", "fr-fr", "lance deux ou trois dés", 2),
+]
+
 # (locale dir, skill lang, utterance, faces)
 SINGLE = [
     ("da-DK", "da-dk", "kast en terning med tyve sider", 20),
@@ -93,7 +99,21 @@ def test_rolls_a_die_with_the_asked_faces(locale, lang, utterance, faces):
     assert _rolls(skill.handle_roll_single_die, data) == [faces]
 
 
-@pytest.mark.parametrize("faces", ["", "gibberish", "zero"])
+@pytest.mark.parametrize("locale,lang,utterance,number", TWO_NUMBERS)
+def test_first_number_of_the_slot_is_the_number_of_dice(locale, lang, utterance, number):
+    skill = _skill(lang)
+    data = _slots(locale, "roll_multiple_dice", utterance)
+    assert _rolls(skill.handle_roll_multiple_dice, data) == [6] * number
+
+
+@pytest.mark.xfail(strict=True, reason="https://github.com/TigreGotico/numtag/issues/244")
+def test_a_couple_of_dice_are_two_dice():
+    skill = _skill("en-us")
+    data = _slots("en-US", "roll_multiple_dice", "roll a couple of dice")
+    assert _rolls(skill.handle_roll_multiple_dice, data) == [6, 6]
+
+
+@pytest.mark.parametrize("faces", ["", "gibberish", "zero", "half"])
 def test_no_positive_faces_rolls_a_d6(faces):
     skill = _skill("en-us")
     assert _rolls(skill.handle_roll_single_die, {"faces": faces}) == [6]

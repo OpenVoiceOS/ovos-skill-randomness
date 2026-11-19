@@ -17,7 +17,7 @@ class RandomnessSkill(OVOSSkill):
         return self.settings.get("die_limit", 16)
 
     def _read_int(self, text: str | None, default: int) -> int:
-        """The first whole number of the text, or the default when there is none or it is zero."""
+        """The first number of the text truncated to an int, or the default when there is none or it is zero."""
         mentions = tag_numbers(text or "", self.lang)
         return (int(Fraction(mentions[0].value)) if mentions else 0) or default
 
