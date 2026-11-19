@@ -37,7 +37,7 @@
         "python": [
             "ovos-utils",
             "ovos-workshop",
-            "ovos-number-parser>=0.0.1,<1.0.0"
+            "numtag>=0.15.10a1"
         ],
         "system": {},
         "skill": []
