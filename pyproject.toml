@@ -10,11 +10,11 @@ readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "OpenVoiceOS", email = "mike@oscillatelabs.net" }]
 keywords = ["ovos", "skill", "voice", "assistant"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "ovos-utils",
     "ovos-workshop",
-    "ovos-number-parser>=0.0.1,<1.0.0",
+    "numtag>=0.18.1a1",
 ]
 
 [project.optional-dependencies]
