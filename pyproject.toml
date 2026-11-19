@@ -14,7 +14,7 @@ requires-python = ">=3.11"
 dependencies = [
     "ovos-utils",
     "ovos-workshop",
-    "numtag>=0.15.10a1",
+    "numtag>=0.18.1a1",
 ]
 
 [project.optional-dependencies]
