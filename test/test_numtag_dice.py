@@ -106,7 +106,6 @@ def test_first_number_of_the_slot_is_the_number_of_dice(locale, lang, utterance,
     assert _rolls(skill.handle_roll_multiple_dice, data) == [6] * number
 
 
-@pytest.mark.xfail(strict=True, reason="https://github.com/TigreGotico/numtag/issues/244")
 def test_a_couple_of_dice_are_two_dice():
     skill = _skill("en-us")
     data = _slots("en-US", "roll_multiple_dice", "roll a couple of dice")
