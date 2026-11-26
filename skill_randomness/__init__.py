@@ -94,7 +94,7 @@ class RandomnessSkill(OVOSSkill):
         faces = self._read_int(message.data.get("faces", "6"), 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         if number > self.die_limit:
-            self.speak_dialog("over_dice_limit", data={"number": self.die_limit})
+            self.speak_dialog("over_dice_limit", data={"number": self.die_limit, "limit": self.die_limit})
             number = self.die_limit
         self.log.debug(f"Rolling {number} dice with {faces} faces")
         result_list: list[int] = []
