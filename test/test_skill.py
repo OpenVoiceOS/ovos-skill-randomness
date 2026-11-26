@@ -96,17 +96,13 @@ class TestRandomnessSkill:
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert 1 <= data["result"] <= 20
 
-    @pytest.mark.parametrize("bad_value", [None, False])
-    def test_roll_single_die_extract_number_fallback(self, test_skill, reset_skill_mocks, bad_value):
-        with patch("skill_randomness.extract_number", return_value=bad_value):
-            test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={"faces": "six"}))
+    def test_roll_single_die_unreadable_faces_fallback(self, test_skill, reset_skill_mocks):
+        test_skill.handle_roll_single_die(Message("roll_single_die.intent", data={"faces": "gibberish"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         assert 1 <= data["result"] <= 6  # fell back to d6
 
-    @pytest.mark.parametrize("bad_value", [None, False])
-    def test_roll_multiple_dice_extract_number_fallback(self, test_skill, reset_skill_mocks, bad_value):
-        with patch("skill_randomness.extract_number", return_value=bad_value):
-            test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": "several", "faces": "six"}))
+    def test_roll_multiple_dice_unreadable_number_fallback(self, test_skill, reset_skill_mocks):
+        test_skill.handle_roll_multiple_dice(Message("roll_multiple_dice.intent", data={"number": "several", "faces": "gibberish"}))
         data = test_skill.speak_dialog.call_args[1]["data"]
         rolls = data["result_string"].split(", ")
         assert len(rolls) == 1  # fell back to 1 die

@@ -1,9 +1,10 @@
 """A skill for all kinds of chance - make a choice, roll a die, flip a coin, etc."""
+from fractions import Fraction
 from os.path import dirname
 from random import choice, randint
 
+from numtag import tag_numbers
 from ovos_bus_client.message import Message
-from ovos_number_parser import extract_number
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.skills import OVOSSkill
 
@@ -14,6 +15,11 @@ class RandomnessSkill(OVOSSkill):
     @property
     def die_limit(self):
         return self.settings.get("die_limit", 16)
+
+    def _read_int(self, text: str | None, default: int) -> int:
+        """The first number of the text truncated to an int, or the default when there is none or it is zero."""
+        mentions = tag_numbers(text or "", self.lang)
+        return (int(Fraction(mentions[0].value)) if mentions else 0) or default
 
     @intent_handler("make_a_choice.intent")
     def handle_make_a_choice_intent(self, message: Message):  # pylint: disable=unused-argument
@@ -72,7 +78,7 @@ class RandomnessSkill(OVOSSkill):
     @intent_handler("roll_single_die.intent")
     def handle_roll_single_die(self, message: Message):
         """Roll a single die."""
-        faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
+        faces = self._read_int(message.data.get("faces", "6"), 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         self.log.debug(f"Rolling a die with {faces} faces")
         result = randint(1, faces)
@@ -84,11 +90,11 @@ class RandomnessSkill(OVOSSkill):
     @intent_handler("roll_multiple_dice.intent")
     def handle_roll_multiple_dice(self, message: Message):
         """Roll multiple dice."""
-        number = int(extract_number(message.data.get("number"), lang=self.lang) or 1)
-        faces = int(extract_number(message.data.get("faces", "6"), lang=self.lang) or 6)
+        number = self._read_int(message.data.get("number"), 1)
+        faces = self._read_int(message.data.get("faces", "6"), 6)
         self.play_audio(f"{dirname(__file__)}/die-roll.wav")
         if number > self.die_limit:
-            self.speak_dialog("over_dice_limit", data={"number": self.die_limit})
+            self.speak_dialog("over_dice_limit", data={"number": self.die_limit, "limit": self.die_limit})
             number = self.die_limit
         self.log.debug(f"Rolling {number} dice with {faces} faces")
         result_list: list[int] = []
