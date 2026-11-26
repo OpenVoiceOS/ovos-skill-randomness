@@ -1,11 +1,27 @@
 """A skill for all kinds of chance - make a choice, roll a die, flip a coin, etc."""
+from fractions import Fraction
 from os.path import dirname
 from random import choice, randint
 
 from ovos_bus_client.message import Message
-from ovos_number_parser import extract_number
+from numtag import Reason, tag_numbers
 from ovos_workshop.decorators import intent_handler
 from ovos_workshop.skills import OVOSSkill
+
+
+def extract_number(utterance: str | None, lang: str) -> int | None:
+    """The number in the utterance, or None.
+
+    An article ("a die") reads as 1 with the article reason and is no number.
+    Of the other mentions, the highest confidence wins.
+    """
+    if not utterance:
+        return None
+    mentions = [m for m in tag_numbers(utterance, lang)
+                if Reason.ARTICLE not in m.reasons]
+    if not mentions:
+        return None
+    return int(Fraction(max(mentions, key=lambda m: m.confidence).value))
 
 
 class RandomnessSkill(OVOSSkill):
